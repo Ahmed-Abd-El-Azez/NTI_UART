@@ -25,7 +25,8 @@ UART_TX uart_tx(
   .tx(TX),
   .done(done_tx),
   .busy(busy_tx),
-  .data(data_out)
+  .data(data_in)
   );
 
 endmodule //UART
+
