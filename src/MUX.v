@@ -16,6 +16,8 @@ always @(*) begin
     4'b0111: mux_out = mux_in[mux_slc];
     4'b1000: mux_out = mux_in[mux_slc];
     4'b1001: mux_out = mux_in[mux_slc];
+    default: mux_out = 1'b1;
   endcase
 end
 endmodule //MUX
+
