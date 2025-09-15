@@ -10,7 +10,7 @@ wire[3:0] mux_slc;
 
 Baud_counter counter(.rst(rst),.clk(clk),.arst_n(arst_n),.en(en),.load(tx_load));
 Frame #(data_width)frame(.data_in(data),.enable(tx_en),.frame_data(frame_data));
-Bit_select #(10,3) bit_selector(.en(en),.clk(clk),.rst(rst),.arst_n(arst_n),.bit_index(mux_slc),.busy(busy),.done(done));
+Bit_select #(10,3) bit_selector(.en(en),.clk(clk),.rst(rst),.arst_n(arst_n),.bit_index(mux_slc),.busy(busy),.done(done),.tx_en(tx_en));
 MUX #(10,3)mux(.mux_in(frame_data),.mux_slc(mux_slc),.mux_out(tx));
 
 endmodule //UART_TX
