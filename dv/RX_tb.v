@@ -90,8 +90,6 @@ task error_test(input [7:0] data_in);begin
     #104170
     RX = tx_word[i];
   end
-  #104170
-  end
   #104170;
 end
 endtask
