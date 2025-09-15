@@ -35,6 +35,14 @@ initial begin
   testing(8'b00001111);
   testing(8'b10110100);
   testing(8'b01101101);
+  error_test(8'b01010101);
+  error_test(8'b10101010);
+  error_test(8'b11111111);
+  error_test(8'b00000000);
+  error_test(8'b11110000);
+  error_test(8'b00001111);
+  error_test(8'b10110100);
+  error_test(8'b01101101);
   $stop;
 end
 
@@ -62,6 +70,28 @@ task testing(input [7:0] data_in);begin
   else
     $display("Test based!");
 
+  #104170;
+end
+endtask
+
+task error_test(input [7:0] data_in);begin
+  RX = 1;
+  tx_word = {1'b0,data_in,1'b0};
+  rst = 1;
+  arst_n = 0;
+  rx_en = 0;
+  RX = 1;
+  #10
+  rst = 0;
+  arst_n = 1;
+  rx_en = 1;
+  #50
+  for (i = 0 ; i < 10;i = i+1 ) begin
+    #104170
+    RX = tx_word[i];
+  end
+  #104170
+  end
   #104170;
 end
 endtask
